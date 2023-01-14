@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/search")
 public class UniversityController {
 
     private UniversityService universityService;
@@ -17,13 +18,27 @@ public class UniversityController {
         super();
         this.universityService = universityService;
     }
-    @RequestMapping(value = "/search" )
+
+    @GetMapping(params = "country")
     @ResponseBody
-    public List<University> getByCountryName(@RequestParam("country") String countryName) {
+    public List<University> getByCountryName(@RequestParam(name = "country") String countryName) {
         return this.universityService.getByCountryName(countryName);
     }
 
-    @RequestMapping(value = "/search/all" )
+    @GetMapping(params = "name")
+    @ResponseBody
+    public List<University> getByUniversityName(@RequestParam(name = "name") String universityName) {
+        return this.universityService.getByUniversityName(universityName);
+    }
+
+    @GetMapping(params = {"name","country"})
+    @ResponseBody
+    public List<University> getByUniversityAndCountryName(@RequestParam(name = "name") String universityName,
+                                                          @RequestParam(name = "country") String countryName) {
+        return this.universityService.getByUniversityAndCountryName(universityName, countryName);
+    }
+
+    @GetMapping(value = "/all" )
     @ResponseBody
     public List<University> getAllUniversity() {
         return this.universityService.getAllUniversity();
