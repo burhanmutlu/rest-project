@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface UniversityService {
     List<University> getByCountryName(String countryName);
+    List<University> getAllUniversity();
+
 }

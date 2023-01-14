@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class UniversityManager implements UniversityService {
 
-    private static final String url = "http://universities.hipolabs.com/search?";
+    private static final String url = "http://universities.hipolabs.com/search";
     @Autowired
     RestTemplate restTemplate;
 
@@ -30,7 +30,7 @@ public class UniversityManager implements UniversityService {
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         HttpEntity<List<University>> entity = new HttpEntity <List<University>>(headers);
 
-        ResponseEntity<List<University>> response = restTemplate.exchange(url+"country="+countryName,
+        ResponseEntity<List<University>> response = restTemplate.exchange(url+"?country="+countryName,
                 HttpMethod.GET, entity, new ParameterizedTypeReference<List<University>>() {
                     @Override
                     public Type getType() {
@@ -40,4 +40,14 @@ public class UniversityManager implements UniversityService {
 
         return response.getBody();
     }
+
+    @Override
+    public List<University> getAllUniversity() {
+
+        ResponseEntity<List<University>> response = restTemplate.exchange(url, HttpMethod.GET,
+                null, new ParameterizedTypeReference<List<University>>() {});
+
+        return response.getBody();
+    }
+
 }

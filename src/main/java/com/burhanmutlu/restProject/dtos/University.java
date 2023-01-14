@@ -15,5 +15,6 @@ public class University {
     private String name;
     private List<String> web_pages;
     private String country;
+    private String alpha_two_code;
 
 }

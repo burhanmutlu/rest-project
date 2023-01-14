@@ -23,4 +23,10 @@ public class UniversityController {
         return this.universityService.getByCountryName(countryName);
     }
 
+    @RequestMapping(value = "/search/all" )
+    @ResponseBody
+    public List<University> getAllUniversity() {
+        return this.universityService.getAllUniversity();
+    }
+
 }
