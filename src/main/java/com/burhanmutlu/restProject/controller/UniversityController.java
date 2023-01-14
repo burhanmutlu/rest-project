@@ -1,7 +1,7 @@
 package com.burhanmutlu.restProject.controller;
 
-import com.burhanmutlu.restProject.business.abstracts.UniversityService;
-import com.burhanmutlu.restProject.entities.concretes.University;
+import com.burhanmutlu.restProject.service.abstracts.UniversityService;
+import com.burhanmutlu.restProject.dtos.University;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,8 +1,11 @@
-package com.burhanmutlu.restProject.entities.concretes;
+package com.burhanmutlu.restProject.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.catalina.LifecycleState;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -10,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class University {
 
     private String name;
-    private String webPages;
+    private List<String> web_pages;
     private String country;
 
 }

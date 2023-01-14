@@ -1,6 +1,6 @@
-package com.burhanmutlu.restProject.business.abstracts;
+package com.burhanmutlu.restProject.service.abstracts;
 
-import com.burhanmutlu.restProject.entities.concretes.University;
+import com.burhanmutlu.restProject.dtos.University;
 
 import java.util.List;
 
