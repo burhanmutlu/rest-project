@@ -1,7 +1,7 @@
 package com.burhanmutlu.restProject.controller;
 
-import com.burhanmutlu.restProject.service.abstracts.UniversityService;
-import com.burhanmutlu.restProject.dtos.University;
+import com.burhanmutlu.restProject.service.UniversityService;
+import com.burhanmutlu.restProject.dtos.UniversityResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,35 +13,29 @@ public class UniversityController {
 
     private UniversityService universityService;
 
-    @Autowired
     public UniversityController(UniversityService universityService) {
-        super();
         this.universityService = universityService;
     }
 
     @GetMapping(params = "country")
-    @ResponseBody
-    public List<University> getByCountryName(@RequestParam(name = "country") String countryName) {
-        return this.universityService.getByCountryName(countryName);
+    public List<UniversityResponseDto> getByCountryName(@RequestParam(name = "country") String countryName) {
+        return universityService.getByCountryName(countryName);
     }
 
     @GetMapping(params = "name")
-    @ResponseBody
-    public List<University> getByUniversityName(@RequestParam(name = "name") String universityName) {
-        return this.universityService.getByUniversityName(universityName);
+    public List<UniversityResponseDto> getByUniversityName(@RequestParam(name = "name") String universityName) {
+        return universityService.getByUniversityName(universityName);
     }
 
     @GetMapping(params = {"name","country"})
-    @ResponseBody
-    public List<University> getByUniversityAndCountryName(@RequestParam(name = "name") String universityName,
-                                                          @RequestParam(name = "country") String countryName) {
-        return this.universityService.getByUniversityAndCountryName(universityName, countryName);
+    public List<UniversityResponseDto> getByUniversityAndCountryName(@RequestParam(name = "name") String universityName,
+                                                                     @RequestParam(name = "country") String countryName) {
+        return universityService.getByUniversityAndCountryName(universityName, countryName);
     }
 
-    @GetMapping(value = "/all" )
-    @ResponseBody
-    public List<University> getAllUniversity() {
-        return this.universityService.getAllUniversity();
+    @GetMapping("/all" )
+    public List<UniversityResponseDto> getAllUniversity() {
+        return universityService.getAllUniversity();
     }
 
 }
